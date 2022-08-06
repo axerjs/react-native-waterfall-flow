@@ -38,7 +38,7 @@
 ## Show Case
 > view example demo [here](https://github.com/axerjs/react-native-waterfall-flow/tree/main/examples)
 
-<img src="https://files.catbox.moe/tcwdjj.gif" width="335">
+<img src="https://www.helloimg.com/images/2022/08/07/Z0IY3v.gif" width="280">
 
 ## Installation
 
