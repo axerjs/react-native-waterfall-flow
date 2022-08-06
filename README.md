@@ -1,57 +1,27 @@
 <h1 align="center">
-  <a href="https://www.npmjs.com/package/react-native-waterfall-flow">
-    Waterfall Flow
+  <a href="https://github.com/axerjs/react-native-waterfall-flow#readme">
+    react-native-waterfall-flow
   </a>
 </h1>
 
 <p align="center">
   High performance waterfall flow component for React Native
 </p>
-<!-- 
+
 <p align="center">
-  <a href="https://github.com/facebook/react-native/blob/HEAD/LICENSE">
-    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="React Native is released under the MIT license." />
+  <a href="https://github.com/axerjs/react-native-waterfall-flow/blob/HEAD/LICENSE">
+    <img src="https://img.shields.io/github/license/axerjs/react-native-waterfall-flow" alt="react-native-waterfall-flow is released under the MIT license." />
   </a>
-  <a href="https://circleci.com/gh/facebook/react-native">
-    <img src="https://circleci.com/gh/facebook/react-native.svg?style=shield" alt="Current CircleCI build status." />
+  <a href="https://www.npmjs.org/package/react-native-waterfall-flow">
+    <img src="https://img.shields.io/badge/npm%20package-v0.1.0-brightgreen" alt="Current npm package version." />
   </a>
-  <a href="https://www.npmjs.org/package/react-native">
-    <img src="https://img.shields.io/npm/v/react-native?color=brightgreen&label=npm%20package" alt="Current npm package version." />
+  <a target="_blank" href="https://standardjs.com/">
+    <img src="https://img.shields.io/badge/code%20style-standard-green" alt="code style" />
   </a>
-  <a href="https://reactnative.dev/docs/contributing">
-    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome!" />
+  <a target="_blank" href="#">
+    <img src="https://img.shields.io/badge/chat-email-blue" alt="chat by email" />
   </a>
-  <a href="https://twitter.com/intent/follow?screen_name=reactnative">
-    <img src="https://img.shields.io/twitter/follow/reactnative.svg?label=Follow%20@reactnative" alt="Follow @reactnative" />
-  </a>
-</p> -->
-
-<!-- <h3 align="center">
-  <a href="https://reactnative.dev/docs/getting-started">Getting Started</a>
-  <span> · </span>
-  <a href="https://reactnative.dev/docs/tutorial">Learn the Basics</a>
-  <span> · </span>
-  <a href="https://reactnative.dev/showcase">Showcase</a>
-  <span> · </span>
-  <a href="https://reactnative.dev/docs/contributing">Contribute</a>
-  <span> · </span>
-  <a href="https://reactnative.dev/help">Community</a>
-  <span> · </span>
-  <a href="https://github.com/facebook/react-native/blob/HEAD/.github/SUPPORT.md">Support</a>
-</h3> -->
-
-<!-- React Native brings [**React**'s][r] declarative UI framework to iOS and Android. With React Native, you use native UI controls and have full access to the native platform.
-
-- **Declarative.** React makes it painless to create interactive UIs. Declarative views make your code more predictable and easier to debug.
-- **Component-Based.** Build encapsulated components that manage their state, then compose them to make complex UIs.
-- **Developer Velocity.** See local changes in seconds. Changes to JavaScript code can be live reloaded without rebuilding the native app.
-- **Portability.** Reuse code across iOS, Android, and [other platforms][p].
-
-React Native is developed and supported by many companies and individual core contributors. Find out more in our [ecosystem overview][e].
-
-[r]: https://reactjs.org/
-[p]: https://reactnative.dev/docs/out-of-tree-platforms
-[e]: https://github.com/facebook/react-native/blob/HEAD/ECOSYSTEM.md -->
+</p>
 
 ## Contents
 
@@ -62,12 +32,13 @@ React Native is developed and supported by many companies and individual core co
 - [Properties](#properties)
 - [Methods](#methods)
 - [Examples](#examples)
-- [📄 License](#-license)
+- [License](#license)
 
 
 ## Show Case
+> view example demo [here](https://github.com/axerjs/react-native-waterfall-flow/tree/main/examples)
 
-<img src="file:///Users/yubowei/Downloads/soogif.gif" width="335" height="725">
+<img src="https://files.catbox.moe/tcwdjj.gif" width="335">
 
 ## Installation
 
@@ -80,12 +51,12 @@ npm install react-native-waterfall-flow --save
 ## Basic Usage
 > `react-native-waterfall-flow` extends from `FlatList`, so config it just like `FlatList`
 
-- import `react-native-waterfall-flow` first
+import `react-native-waterfall-flow` first
 ```jsx
 import WaterfallFlow from 'react-native-waterfall-flow'
 ```
 
-- render WaterfallFlow, like this:
+render WaterfallFlow, like this:
 ```jsx
 <WaterfallFlow
   data={data}
@@ -131,7 +102,7 @@ npm i
 npm start
 ```
 
-## 📄 License
+## License
 
 `react-native-waterfall-flow` is MIT licensed, as found in the [LICENSE][l] file.
 
