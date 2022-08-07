@@ -45,7 +45,7 @@ screenshot
 
 screenshot gif
 <p>
-<img src="https://www.helloimg.com/images/2022/08/07/Z066Kz.gif" style="border: 1px solid #f0f0f0" width="250">
+<img src="https://www.helloimg.com/images/2022/08/07/Z08Cnb.gif" width="250">
 </p>
 
 ## Installation
