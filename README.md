@@ -39,14 +39,18 @@
 > view example demo [here](https://github.com/axerjs/react-native-waterfall-flow/tree/main/examples)
 
 screenshot
-<p>
+<!-- <p>
   <img style="border:1px solid #f0f0f0" src="https://www.helloimg.com/images/2022/08/07/Z08BFK.jpg" width="250">
-<p>
+<p> -->
+![](https://images.weserv.nl/?url=www.helloimg.com/images/2022/08/07/Z08BFK.jpg&w=250)
 
 screenshot gif
-<p>
-<img src="https://www.helloimg.com/images/2022/08/07/Z066Kz.gif" style="border: 1px solid #f0f0f0" width="250">
-</p>
+<!-- <p>
+<img src="https://images.weserv.nl/?url=www.helloimg.com/images/2022/08/07/Z08G7o.gif" width="250">
+</p> -->
+
+![](https://images.weserv.nl/?url=www.helloimg.com/images/2022/08/07/Z081qt.gif&w=250&output=gif&n=-1)
+
 
 ## Installation
 
