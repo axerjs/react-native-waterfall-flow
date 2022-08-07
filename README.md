@@ -40,7 +40,7 @@
 
 screenshot
 <p>
-  <img src="https://www.helloimg.com/images/2022/08/07/Z08BFK.jpg" width="250">
+  <img style="border:1px solid #f0f0f0" src="https://www.helloimg.com/images/2022/08/07/Z08BFK.jpg" width="250">
 <p>
 
 screenshot gif
