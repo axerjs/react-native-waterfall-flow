@@ -13,7 +13,7 @@
     <img src="https://img.shields.io/github/license/axerjs/react-native-waterfall-flow" alt="react-native-waterfall-flow is released under the MIT license." />
   </a>
   <a href="https://www.npmjs.org/package/react-native-waterfall-flow">
-    <img src="https://img.shields.io/badge/npm%20package-v0.1.1-brightgreen" alt="Current npm package version." />
+    <img src="https://img.shields.io/badge/npm%20package-v0.1.2-brightgreen" alt="Current npm package version." />
   </a>
   <a target="_blank" href="https://standardjs.com/">
     <img src="https://img.shields.io/badge/code%20style-standard-green" alt="code style" />
@@ -62,7 +62,7 @@ screenshot gif
 
 ## Installation
 
-> v0.1.1
+> v0.1.2
 
 ```bash
 npm install react-native-waterfall-flow --save
