@@ -25,7 +25,7 @@
 
 <p align="center">
   See the
-  <a href="https://github.com/axerjs/react-native-waterfall-flow#README-zh.md">
+  <a href="https://github.com/axerjs/react-native-waterfall-flow/blob/main/README-zh.md">
     中文文档
   </a>
   for Chinese readme.
@@ -104,6 +104,7 @@ all `FlatList`‘s properties are supported, just lists new properties here
 | :------------- | :-------------: | :------: | :---------------------------------------------------------------------------------------------------------- |
 | itemHeight | - |  `func`  |   Used to get the height for a given item at the specified index. It determines whether the waterfallflow can render properly, so it's a required property
 
+> We must set the true height of each item, which is mainly used to calculate the height of each column and assign the item to a column with a shorter height. If the height of the item is handed over to the component to obtain it, the experience of scrolling the list will be poor. Therefore, it is the best choice to leave the height of the item to you to set.
 how to set itemHeight, like this:
 ```jsx
 itemHeight={({ item, index }) => {
