@@ -69,14 +69,13 @@ npm install react-native-waterfall-flow --save
 ```
 
 ## Basic Usage
-> `react-native-waterfall-flow` extends from `FlatList`, so use it just like `FlatList`
+> `react-native-waterfall-flow` is implemented based on `FlatList` and supports all properties and methods of `FlatList`. Make sure you are familiar with how to use [FlatList](https://reactnative.cn/docs/flatlist)
 
-import `react-native-waterfall-flow` first
+
+how to use WaterfallFlow, like this:
 ```jsx
 import WaterfallFlow from 'react-native-waterfall-flow'
 ```
-
-render WaterfallFlow, like this:
 ```jsx
 <WaterfallFlow
   data={data}

@@ -60,7 +60,7 @@ npm install react-native-waterfall-flow --save
 ```
 
 ## 基本使用
-> `react-native-waterfall-flow`是基于`FlatList`实现的, 支持`FlatList`的所有属性和方法
+> `react-native-waterfall-flow`是基于`FlatList`实现的, 支持`FlatList`的所有属性和方法。请确保您已熟悉如何使用 [FlatList](https://reactnative.cn/docs/flatlist)
 
 ```jsx
 import WaterfallFlow from 'react-native-waterfall-flow'
