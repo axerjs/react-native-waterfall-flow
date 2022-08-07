@@ -5,7 +5,7 @@
 </h1>
 
 <p align="center">
-  High performance waterfall flow component for React Native
+  一个基于FlatList实现的高性能瀑布流组件
 </p>
 
 <p align="center">
@@ -23,36 +23,27 @@
   </a>
 </p>
 
-<p align="center">
-  See the
-  <a href="https://github.com/axerjs/react-native-waterfall-flow#README-zh.md">
-    中文文档
-  </a>
-  for Chinese readme.
-</p>
+## 目录
 
-## Contents
-
-- [Contents](#contents)
-- [Show Case](#show-case)
-- [Installation](#installation)
-- [Basic Usage](#basic-usage)
-- [Properties](#properties)
-- [Methods](#methods)
-- [Examples](#examples)
+- [展示案例](#展示案例)
+- [安装](#安装)
+- [基本使用](#基本使用)
+- [属性](#属性)
+- [方法](#方法)
+- [示例](#示例)
 - [License](#license)
 
 
-## Show Case
-> view example demo [here](https://github.com/axerjs/react-native-waterfall-flow/tree/main/examples)
+## 展示案例
+> 下面展示的是一个包括下拉刷新，上拉加载更多的高性能瀑布流列表
 
-screenshot
+截屏
 <!-- <p>
   <img style="border:1px solid #f0f0f0" src="https://www.helloimg.com/images/2022/08/07/Z08BFK.jpg" width="250">
 <p> -->
 ![](https://images.weserv.nl/?url=www.helloimg.com/images/2022/08/07/Z08BFK.jpg&w=250)
 
-screenshot gif
+截图gif
 <!-- <p>
 <img src="https://images.weserv.nl/?url=www.helloimg.com/images/2022/08/07/Z08G7o.gif" width="250">
 </p> -->
@@ -60,7 +51,7 @@ screenshot gif
 ![](https://images.weserv.nl/?url=www.helloimg.com/images/2022/08/07/Z081qt.gif&w=250&output=gif&n=-1)
 
 
-## Installation
+## 安装
 
 > v0.1.1
 
@@ -68,15 +59,13 @@ screenshot gif
 npm install react-native-waterfall-flow --save
 ```
 
-## Basic Usage
-> `react-native-waterfall-flow` extends from `FlatList`, so use it just like `FlatList`
+## 基本使用
+> `react-native-waterfall-flow`是基于`FlatList`实现的, 支持`FlatList`的所有属性和方法
 
-import `react-native-waterfall-flow` first
 ```jsx
 import WaterfallFlow from 'react-native-waterfall-flow'
 ```
 
-render WaterfallFlow, like this:
 ```jsx
 <WaterfallFlow
   data={data}
@@ -96,26 +85,26 @@ render WaterfallFlow, like this:
 />
 ```
 
-## Properties
+## 属性
 
-all `FlatList`‘s properties are supported, just lists new properties here
+几乎所有FlatList的都是支持的，这里只列出新增的属性
 
 | Prop           |     Default     |   Type   | Description                                                                                                 |
 | :------------- | :-------------: | :------: | :---------------------------------------------------------------------------------------------------------- |
-| itemHeight | - |  `func`  |   Used to get the height for a given item at the specified index. It determines whether the waterfallflow can render properly, so it's a required property
+| itemHeight | - |  `func`  |   用于获取指定索引处给定项目的高度。它决定了瀑布流是否可以正确渲染，因此它是必填的
 
-how to set itemHeight, like this:
+> 我们必须设置每个item的真实高度，主要用于计算每一列的高度并分配item到高度较矮的列，如果item的高度交给组件内部去实现获取，列表滚动时体验会很差。因此将item的高度交给使用方去设置是最优的选择。
 ```jsx
 itemHeight={({ item, index }) => {
   return item.height  // set the height of item
 }}
 ```   
 
-## Methods
-all `FlatList`‘s methods are supported, not listed here
+## 方法
+所有和方法和FlatList保持一致，这里不一一列出，可查看[FlatList文档](https://reactnative.cn/docs/flatlist)
 
-## Examples
-the example demo is an expo demo app, run it like this:
+## 示例
+[示例代码](https://github.com/axerjs/react-native-waterfall-flow/tree/main/examples) 是一个expo app, 像这样启动项目
 ```bash
 cd examples
 npm i
