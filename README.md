@@ -13,7 +13,7 @@
     <img src="https://img.shields.io/github/license/axerjs/react-native-waterfall-flow" alt="react-native-waterfall-flow is released under the MIT license." />
   </a>
   <a href="https://www.npmjs.org/package/react-native-waterfall-flow">
-    <img src="https://img.shields.io/badge/npm%20package-v0.1.0-brightgreen" alt="Current npm package version." />
+    <img src="https://img.shields.io/badge/npm%20package-v0.1.1-brightgreen" alt="Current npm package version." />
   </a>
   <a target="_blank" href="https://standardjs.com/">
     <img src="https://img.shields.io/badge/code%20style-standard-green" alt="code style" />
@@ -38,18 +38,26 @@
 ## Show Case
 > view example demo [here](https://github.com/axerjs/react-native-waterfall-flow/tree/main/examples)
 
-<img src="https://www.helloimg.com/images/2022/08/07/Z0IY3v.gif" width="280">
+screenshot
+<p>
+  <img style="border:1px solid #f0f0f0" src="https://www.helloimg.com/images/2022/08/07/Z08BFK.jpg" width="250">
+<p>
+
+screenshot gif
+<p>
+<img src="https://www.helloimg.com/images/2022/08/07/Z066Kz.gif" style="border: 1px solid #f0f0f0" width="250">
+</p>
 
 ## Installation
 
-> v0.1.0
+> v0.1.1
 
 ```bash
 npm install react-native-waterfall-flow --save
 ```
 
 ## Basic Usage
-> `react-native-waterfall-flow` extends from `FlatList`, so config it just like `FlatList`
+> `react-native-waterfall-flow` extends from `FlatList`, so use it just like `FlatList`
 
 import `react-native-waterfall-flow` first
 ```jsx
