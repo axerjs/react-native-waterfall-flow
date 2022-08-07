@@ -13,7 +13,7 @@
     <img src="https://img.shields.io/github/license/axerjs/react-native-waterfall-flow" alt="react-native-waterfall-flow is released under the MIT license." />
   </a>
   <a href="https://www.npmjs.org/package/react-native-waterfall-flow">
-    <img src="https://img.shields.io/badge/npm%20package-v0.1.2-brightgreen" alt="Current npm package version." />
+    <img src="https://img.shields.io/badge/npm%20package-v0.1.3-brightgreen" alt="Current npm package version." />
   </a>
   <a target="_blank" href="https://standardjs.com/">
     <img src="https://img.shields.io/badge/code%20style-standard-green" alt="code style" />
@@ -53,7 +53,7 @@
 
 ## 安装
 
-> v0.1.2
+> v0.1.3
 
 ```bash
 npm install react-native-waterfall-flow --save
@@ -93,7 +93,7 @@ import WaterfallFlow from 'react-native-waterfall-flow'
 | :------------- | :-------------: | :------: | :---------------------------------------------------------------------------------------------------------- |
 | itemHeight | - |  `func`  |   用于获取指定索引处给定项目的高度。它决定了瀑布流是否可以正常渲染，因此它是必填的
 
-> 我们必须设置每个item的真实高度，主要用于计算每一列的高度并分配item到高度较矮的列，如果item的高度交给组件内部去实现获取，列表滚动时体验会很差。因此将item的高度交给使用方去设置是最优的选择。
+> 必须设置每个item的真实高度，主要用于计算每一列的高度并分配item到高度较矮的列，如果item的高度交给组件内部去实现获取，列表滚动时体验会很差。因此将item的高度交给使用方去设置是最优的选择。
 ```jsx
 itemHeight={({ item, index }) => {
   return item.height  // set the height of item
