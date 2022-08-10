@@ -28,7 +28,7 @@
   <a href="https://github.com/axerjs/react-native-waterfall-flow/blob/main/README-en.md">
     English readme
   </a>
-  英文文档.
+  英文文档
 </p>
 
 ## 目录
