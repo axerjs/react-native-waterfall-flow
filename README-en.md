@@ -48,7 +48,7 @@ screenshot gif
 <img src="https://images.weserv.nl/?url=www.helloimg.com/images/2022/08/07/Z08G7o.gif" width="250">
 </p> -->
 
-![](https://images.weserv.nl/?url=//www.helloimg.com/images/2022/08/10/ZNEXHq.gif&w=250&output=gif&n=-1)
+![](https://images.weserv.nl/?url=//www.helloimg.com/images/2022/08/10/ZNE99X.gif&w=250&output=gif&n=-1)
 
 
 ## Installation
@@ -72,7 +72,7 @@ import WaterfallFlow from 'react-native-waterfall-flow'
   data={data}
   numColumns={2}
   itemHeight={({ item, index }) => {
-    return item.height
+    return ITEM_HEIGHT
   }}
   renderItem={({ item, index, columnIndex }) => {
     return (
