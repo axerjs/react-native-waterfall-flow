@@ -46,11 +46,11 @@ export default class TestWaterfallFlowScreen extends Component {
     setTimeout(() => { // mock request data
       const newData = imgList.slice((page - 1) * this.pageSize, page * this.pageSize).map(img => {
         const { width, height } = img
-        const cardWidth = Math.floor(window.width / 2 - 8)
+        const cardWidth = Math.floor(window.width / 2)
         return {
           ...img, 
           width: cardWidth,
-          height: Math.floor(height / width * cardWidth) + 8
+          height: Math.floor(height / width * cardWidth)
         }
       })
       const noMore = newData.length < this.pageSize
@@ -104,7 +104,7 @@ class Card extends PureComponent {
   render() {
     const { item, index, columnIndex } = this.props
     return (
-      <View style={{ flex: 1, padding: 4, overflow: 'hidden' }}>
+      <View style={{ flex: 1, overflow: 'hidden' }}>
         <TouchableOpacity 
           style={{ backgroundColor: '#fff', flex: 1 }} 
           onPress={() => Alert.alert(`${index}`)}
@@ -126,9 +126,9 @@ class Header extends PureComponent {
       <FadeImage 
         resizeMode="cover"  
         source={{ 
-          uri: 'https://img0.baidu.com/it/u=2931014973,245826024&fm=253&fmt=auto&app=120&f=JPEG?w=1280&h=800', 
+          uri: 'https://img0.baidu.com/it/u=266597227,4250059863&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=281', 
           width: window.width, 
-          height: 800 / 1280 * window.width 
+          height: 281 / 500 * window.width 
         }}
       />
     )

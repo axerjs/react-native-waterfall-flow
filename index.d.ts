@@ -9,7 +9,7 @@ interface WaterfallFlowProps<ItemT> extends Omit<FlatListProps<ItemT>, 'renderIt
    * for example:
    * ```
    * itemHeight={({ item, index }) => {
-   *   return item.height
+   *   return ITEM_HEIGHT
    * }}
    * ```
    */
