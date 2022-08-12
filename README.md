@@ -46,15 +46,9 @@
 > 下面展示的是一个包括下拉刷新，上拉加载更多的高性能瀑布流列表
 
 截屏
-<!-- <p>
-  <img style="border:1px solid #f0f0f0" src="https://www.helloimg.com/images/2022/08/07/Z08BFK.jpg" width="250">
-<p> -->
 ![](https://images.weserv.nl/?url=//www.helloimg.com/images/2022/08/10/ZNE3Pc.png&w=250)
 
 截图gif
-<!-- <p>
-<img src="https://images.weserv.nl/?url=www.helloimg.com/images/2022/08/07/Z08G7o.gif" width="250">
-</p> -->
 
 ![](https://images.weserv.nl/?url=https://www.helloimg.com/images/2022/08/10/ZNEdaM.gif&w=250&output=gif&n=-1)
 
