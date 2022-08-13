@@ -99,9 +99,28 @@ import WaterfallFlow from 'react-native-waterfall-flow'
 我们相信你能够准确的计算出每个item的高度并将其设置到`itemHeight`中，以便我们快速准确的分配item到对应的位置。如果item的高度交给组件内部去实现获取，会非常影响性能和体验，这不是一个好的选择
 ```jsx
 itemHeight={({ item, index }) => {
-  return ITEM_HEIGHT  // 用你的聪明的大脑计算出当前项的高度
+  return ITEM_HEIGHT  // 用你聪明的小脑瓜计算出当前项的高度
 }}
 ```   
+
+
+item之间的间距你可以在renderItem中去处理, 暴露出了columnIndex，表示当前item在第几列，这样你就能够自由的控制item的上下左右间距了，例如：
+> 注意：上下部分的padding也要计算在item的高度中
+```js
+renderItem = {({ item, index, columnIndex }) => {
+  return (
+    <View
+      style={{
+        paddingLeft: columnIndex === 0 ? 12 : 6,
+        paddingRight: columnIndex === 0 ? 6 : 12,
+        paddingTop: 3,
+        paddingBottom: 3
+      }}
+    >
+    <View/>
+  )
+}}
+```
 
 ## 方法
 所有和方法和FlatList保持一致，这里不一一列出，可查看[FlatList文档](https://reactnative.cn/docs/flatlist)
