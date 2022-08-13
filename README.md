@@ -78,8 +78,14 @@ import WaterfallFlow from 'react-native-waterfall-flow'
   }}
   renderItem={({ item, index, columnIndex }) => {
     return (
-      <View>
-        <Text>title: {item.title}</Text>
+      <View
+        style={{
+          paddingLeft: columnIndex === 0 ? 12 : 6,
+          paddingRight: columnIndex === 0 ? 6 : 12,
+          paddingTop: 3,
+          paddingBottom: 3
+        }}
+      >
         <Text>index: {index}</Text>
         <Text>columnIndex: {columnIndex}</Text>
       <View/>
@@ -105,7 +111,9 @@ itemHeight={({ item, index }) => {
 
 
 item之间的间距你可以在renderItem中去处理, 暴露出了columnIndex，表示当前item在第几列，这样你就能够自由的控制item的上下左右间距了，例如：
-> 注意：上下部分的padding也要计算在item的高度中
+
+> 注意：上下部分的padding也要计算在item的高度中；每个item的宽度等于 `瀑布流的宽度` / `numColumns`
+
 ```js
 renderItem = {({ item, index, columnIndex }) => {
   return (
