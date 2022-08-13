@@ -38,17 +38,12 @@
 > view example demo [here](https://github.com/axerjs/react-native-waterfall-flow/tree/main/examples)
 
 screenshot
-<!-- <p>
-  <img style="border:1px solid #f0f0f0" src="https://www.helloimg.com/images/2022/08/07/Z08BFK.jpg" width="250">
-<p> -->
-![](https://images.weserv.nl/?url=//www.helloimg.com/images/2022/08/10/ZNE3Pc.png&w=250)
+
+![](https://camo.githubusercontent.com/ddf4c8b6ec2dcd0c02e52b08db3af3686fa2118106940ef8688b8773213ef5bf/68747470733a2f2f696d616765732e7765736572762e6e6c2f3f75726c3d2f2f7777772e68656c6c6f696d672e636f6d2f696d616765732f323032322f30382f31302f5a4e453350632e706e6726773d323530)
 
 screenshot gif
-<!-- <p>
-<img src="https://images.weserv.nl/?url=www.helloimg.com/images/2022/08/07/Z08G7o.gif" width="250">
-</p> -->
 
-![](https://images.weserv.nl/?url=https://www.helloimg.com/images/2022/08/10/ZNEdaM.gif&w=250&output=gif&n=-1)
+![](https://camo.githubusercontent.com/e9d58db06d26b7098bcb8285c586c541a97c31ad50e33640e3ee1d08603d37d4/68747470733a2f2f696d616765732e7765736572762e6e6c2f3f75726c3d68747470733a2f2f7777772e68656c6c6f696d672e636f6d2f696d616765732f323032322f30382f31302f5a4e4564614d2e67696626773d323530266f75747075743d676966266e3d2d31)
 
 
 ## Installation
