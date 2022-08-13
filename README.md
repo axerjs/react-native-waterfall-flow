@@ -78,14 +78,7 @@ import WaterfallFlow from 'react-native-waterfall-flow'
   }}
   renderItem={({ item, index, columnIndex }) => {
     return (
-      <View
-        style={{
-          paddingLeft: columnIndex === 0 ? 12 : 6,
-          paddingRight: columnIndex === 0 ? 6 : 12,
-          paddingTop: 3,
-          paddingBottom: 3
-        }}
-      >
+      <View>
         <Text>index: {index}</Text>
         <Text>columnIndex: {columnIndex}</Text>
       <View/>
