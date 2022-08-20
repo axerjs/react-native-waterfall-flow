@@ -13,7 +13,7 @@
     <img src="https://img.shields.io/github/license/axerjs/react-native-waterfall-flow" alt="react-native-waterfall-flow is released under the MIT license." />
   </a>
   <a href="https://www.npmjs.org/package/react-native-waterfall-flow">
-    <img src="https://img.shields.io/badge/npm%20package-v0.1.4-brightgreen" alt="Current npm package version." />
+    <img src="https://img.shields.io/badge/npm%20package-v0.1.5-brightgreen" alt="Current npm package version." />
   </a>
   <a target="_blank" href="https://standardjs.com/">
     <img src="https://img.shields.io/badge/code%20style-standard-green" alt="code style" />
@@ -56,7 +56,7 @@
 
 ## 安装
 
-> v0.1.4
+> v0.1.5
 
 ```bash
 npm install react-native-waterfall-flow --save
@@ -84,47 +84,295 @@ import WaterfallFlow from 'react-native-waterfall-flow'
       <View/>
     )
   }}
+  ...
 />
 ```
 
 ## 属性
 
-几乎所有FlatList的属性都是支持的，这里只列出新增的属性
+> 几乎所有FlatList的属性都是支持的，这里只列出一些常用的属性，其余属性可查看[FlatList文档](https://reactnative.cn/docs/flatlist)
 
-| Prop           |     Default     |   Type   | Description                                                                                                 |
-| :------------- | :-------------: | :------: | :---------------------------------------------------------------------------------------------------------- |
-| itemHeight | - |  `func`  |   用于获取每个item的真实高度，你必须设置这个属性
+### **`itemHeight`** 
 
-我们相信你能够准确的计算出每个item的高度并将其设置到`itemHeight`中，以便我们快速准确的分配item到对应的位置。如果item的高度交给组件内部去实现获取，会非常影响性能和体验，这不是一个好的选择
+|   Type   |  Required |                Description                |
+| :------ | :--------| :--------------------------------------  |
+|  `function`  |    true    |  用于获取每个item的真实高度 |
+
+- `item` (Object): 当前项的数据
+- `index` (number): 当前项的索引
+
+相信你能够准确的计算出每个`item`的高度并将其设置到`itemHeight`中，以便于我们将其布局到正确的位置。如果`item`的高度交给瀑布流组件内部去实现获取，会非常影响性能和体验，这不是一个好的选择
+
+示例用法：
+
 ```jsx
-itemHeight={({ item, index }) => {
-  return ITEM_HEIGHT  // 用你聪明的小脑瓜计算出当前项的高度
-}}
+<WaterfallFlow
+  itemHeight={({ item, index }) => {
+    return ITEM_HEIGHT  // 用你聪明的小脑瓜计算出当前项的高度
+  }}
+  ...
+/>
 ```   
 
+---
+### **`renderItem`** 
 
-item之间的间距你可以在renderItem中去处理, 暴露出了columnIndex，表示当前item在第几列，这样你就能够自由的控制item的上下左右间距了，例如：
+|   Type   |  Required |                Description                |
+| :------ | :--------| :--------------------------------------  |
+|  `function`  |    true    |  用于将当前`item`渲染到列表中 |
 
-> 注意：上下部分的padding也要计算在item的高度中；每个item的宽度等于 `瀑布流的宽度` / `numColumns`
+- `item` (Object): 当前项的数据
+- `index` (number): 当前项的索引
+- `columnIndex` (number): 当前项在列表中的第几列
 
-```js
-renderItem = {({ item, index, columnIndex }) => {
-  return (
-    <View
-      style={{
-        paddingLeft: columnIndex === 0 ? 12 : 6,
-        paddingRight: columnIndex === 0 ? 6 : 12,
-        paddingTop: 3,
-        paddingBottom: 3
-      }}
-    >
-    <View/>
-  )
-}}
+示例用法：
+
+```jsx
+<WaterfallFlow
+  renderItem={({ item, index, columnIndex }) => {
+    return (
+      <View>
+        <Text>index: {index}</Text>
+        <Text>columnIndex: {columnIndex}</Text>
+      <View/>
+    )
+  }}
+  ...
+/>
+```   
+
+**如何设置间距** 
+
+`renderItem`方法暴露出了`columnIndex`，该属性表示当前`item`在列表中第几列，这样你就能够自由的控制item的上下左右间距了。上下部分的padding也要计算在item的高度中；每个item的宽度等于 `瀑布流的宽度` / `numColumns`
+
+示例用法：
+```jsx
+<WaterfallFlow
+  renderItem = {({ item, index, columnIndex }) => {
+    return (
+      <View
+        style={{
+          paddingLeft: columnIndex === 0 ? 12 : 6,
+          paddingRight: columnIndex === 0 ? 6 : 12,
+          paddingTop: 3,
+          paddingBottom: 3
+        }}
+      >
+      <View/>
+    )
+  }}
+  ...
+/>
 ```
 
+---
+### **`data`** 
+
+|   Type   |  Required |                Description                |
+| :------ | :--------| :--------------------------------------  |
+|  `array`  |    true    |  瀑布流数据源，可以是任意内容的数组 |
+
+---
+### **`numColumns`** 
+
+|   Type   |  Required |                Description                |
+| :------ | :--------| :--------------------------------------  |
+|  `number`  |    false    |  瀑布流的列数，默认为2，即两列 |
+
+---
+### **`ListHeaderComponent`** 
+
+|   Type   |  Required |                Description                |
+| :------ | :--------| :--------------------------------------  |
+|  `component`, `function`  |    false    |  头部组件。可以是 React Component 或 render 函数。 |
+
+示例用法：
+```jsx
+<WaterfallFlow
+  ListHeaderComponent = {
+    <View>
+      <Text>this is header<Text>
+    <View/>
+  }
+  ...
+/>
+```
+
+---
+### **`ListFooterComponent`** 
+
+|   Type   |  Required |                Description                |
+| :------ | :--------| :--------------------------------------  |
+|  `component`, `function`  |    false    |  尾部组件。可以是 React Component 或 render 函数。 |
+
+示例用法：
+```jsx
+<WaterfallFlow
+  ListFooterComponent = {
+    <View>
+      <Text>this is footer<Text>
+    <View/>
+  }
+  ...
+/>
+```
+
+---
+### **`ListEmptyComponent`** 
+
+|   Type   |  Required |                Description                |
+| :------ | :--------| :--------------------------------------  |
+|  `component`, `function`  |    false    |  列表为空时渲染该组件。可以是 React Component 或 render 函数 |
+
+示例用法：
+```jsx
+<WaterfallFlow
+  ListEmptyComponent = {
+    <View>
+      <Text>no data here<Text>
+    <View/>
+  }
+  ...
+/>
+```
+
+---
+### **`onEndReached`** 
+
+
+```jsx
+(info: {distanceFromEnd: number}) => void
+```
+
+|   Type   |  Required |                Description                |
+| :------ | :--------| :--------------------------------------  |
+|  `function`  |    false    |  当列表滚动到底部是调用 |
+
+
+
+---
+### **`onRefresh`** 
+
+
+```jsx
+() => void
+```
+
+|   Type   |  Required |                Description                |
+| :------ | :--------| :--------------------------------------  |
+|  `function`  |    false    |  如果设置了此选项，则会在列表头部添加一个标准的[`RefreshControl`](https://www.react-native.cn/docs/refreshcontrol) 控件，以便实现“下拉刷新”的功能。同时你需要正确设置`refreshing`属性。 |
+
+
+---
+### **`refreshing`** 
+
+|   Type   |  Required |                Description                |
+| :------ | :--------| :--------------------------------------  |
+|  `boolean`  |    false    |  在等待加载新数据时将此属性设为 true，列表就会显示出一个正在加载的符号。|
+
+---
+### **`style`** 
+
+|   Type   |  Required |                Description                |
+| :------ | :--------| :--------------------------------------  |
+|  [`view styles`](https://www.react-native.cn/docs/view-style-props)  |    false    |  用于设置瀑布流外层样式，默认会有`{ flex: 1 }`的样式，即高度充满父容器 |
+
+
+---
+### **`contentContainerStyle`** 
+
+|   Type   |  Required |                Description                |
+| :------ | :--------| :--------------------------------------  |
+| [`view styles`](https://www.react-native.cn/docs/view-style-props)   |    false    |  瀑布流内容容器样式 |
+
+建议将其用于设置容器背景色。 示例：
+
+```jsx
+<WaterfallFlow
+  contentContainerStyle={{ backgroundColor: '#f9f9f9' }}
+  ...
+/>
+```
+
+
 ## 方法
-所有和方法和FlatList保持一致，这里不一一列出，可查看[FlatList文档](https://reactnative.cn/docs/flatlist)
+
+> 所有和方法和FlatList保持一致，这里只列出几个常用的，其余方法可查看[FlatList文档](https://reactnative.cn/docs/flatlist)
+
+### **`scrollToEnd()`** 
+
+```jsx
+scrollToEnd([params])
+```
+滚动到瀑布流列表的底部
+
+**参数：**
+|   Prop   |   Type   |  Required |
+| :------| :------ | :--------|
+|   params   |  `object`  |    false    |
+
+params的参数如下:
+
+- 'animated' (boolean) - 是否有滚动动画. 默认 `true`.
+
+**方法调用示例**
+
+绑定ref:
+```jsx
+<WaterfallFlow
+  ref={ref => this.listRef = ref}
+  ...
+/>
+```
+
+调用方法:
+```jsx
+this.listRef.scrollToEnd()
+```
+
+
+---
+### **`scrollToIndex()`** 
+
+```jsx
+scrollToIndex([params])
+```
+
+将位于指定位置的元素滚动到可视区的指定位置，当viewPosition 为 0 时将它滚动到屏幕顶部，为 1 时将它滚动到屏幕底部，为 0.5 时将它滚动到屏幕中央。
+
+**参数：**
+|   Prop   |   Type   |  Required |
+| :------| :------ | :--------|
+|   params   |  `object`  |    true    |
+
+params的参数如下:
+
+- 'animated' (boolean) - 是否有滚动动画. 默认 `true`
+- 'index' (number) - 滚动到指定元素的下标。 必须设置该属性
+- 'viewOffset' (number) - 偏移最终目标位置的固定像素数
+- 'viewPosition' (number) - 为 0 时将它滚动到屏幕顶部，为 1 时将它滚动到屏幕底部，为 0.5 时将它滚动到屏幕中央
+
+
+---
+### **`scrollToOffset()`** 
+
+```jsx
+scrollToOffset([params])
+```
+
+滚动列表到指定的偏移（以像素为单位），等同于ScrollView的scrollTo方法。
+
+**参数：**
+|   Prop   |   Type   |  Required |
+| :------| :------ | :--------|
+|   params   |  `object`  |    true    |
+
+params的参数如下:
+
+- 'animated' (boolean) - 是否有滚动动画. 默认 `true`
+- 'offset' (number) - 要滚动到的偏移量。必须设置该属性
+
+
 
 ## 示例
 [示例代码](https://github.com/axerjs/react-native-waterfall-flow/tree/main/examples) 是一个expo app, 像这样启动项目
