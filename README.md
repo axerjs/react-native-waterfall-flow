@@ -112,9 +112,8 @@ import WaterfallFlow from 'react-native-waterfall-flow'
   }}
   ...
 />
-```   
+```
 
----
 ### **`renderItem`** 
 
 |   Type   |  Required |                Description                |
@@ -139,7 +138,7 @@ import WaterfallFlow from 'react-native-waterfall-flow'
   }}
   ...
 />
-```   
+```
 
 **如何设置间距** 
 
@@ -165,21 +164,18 @@ import WaterfallFlow from 'react-native-waterfall-flow'
 />
 ```
 
----
 ### **`data`** 
 
 |   Type   |  Required |                Description                |
 | :------ | :--------| :--------------------------------------  |
 |  `array`  |    true    |  瀑布流数据源，可以是任意内容的数组 |
 
----
 ### **`numColumns`** 
 
 |   Type   |  Required |                Description                |
 | :------ | :--------| :--------------------------------------  |
 |  `number`  |    false    |  瀑布流的列数，默认为2，即两列 |
 
----
 ### **`ListHeaderComponent`** 
 
 |   Type   |  Required |                Description                |
@@ -198,7 +194,6 @@ import WaterfallFlow from 'react-native-waterfall-flow'
 />
 ```
 
----
 ### **`ListFooterComponent`** 
 
 |   Type   |  Required |                Description                |
@@ -217,7 +212,6 @@ import WaterfallFlow from 'react-native-waterfall-flow'
 />
 ```
 
----
 ### **`ListEmptyComponent`** 
 
 |   Type   |  Required |                Description                |
@@ -236,7 +230,6 @@ import WaterfallFlow from 'react-native-waterfall-flow'
 />
 ```
 
----
 ### **`onEndReached`** 
 
 
@@ -250,7 +243,6 @@ import WaterfallFlow from 'react-native-waterfall-flow'
 
 
 
----
 ### **`onRefresh`** 
 
 
@@ -263,14 +255,12 @@ import WaterfallFlow from 'react-native-waterfall-flow'
 |  `function`  |    false    |  如果设置了此选项，则会在列表头部添加一个标准的[`RefreshControl`](https://www.react-native.cn/docs/refreshcontrol) 控件，以便实现“下拉刷新”的功能。同时你需要正确设置`refreshing`属性。 |
 
 
----
 ### **`refreshing`** 
 
 |   Type   |  Required |                Description                |
 | :------ | :--------| :--------------------------------------  |
 |  `boolean`  |    false    |  在等待加载新数据时将此属性设为 true，列表就会显示出一个正在加载的符号。|
 
----
 ### **`style`** 
 
 |   Type   |  Required |                Description                |
@@ -278,7 +268,6 @@ import WaterfallFlow from 'react-native-waterfall-flow'
 |  [`view styles`](https://www.react-native.cn/docs/view-style-props)  |    false    |  用于设置瀑布流外层样式，默认会有`{ flex: 1 }`的样式，即高度充满父容器 |
 
 
----
 ### **`contentContainerStyle`** 
 
 |   Type   |  Required |                Description                |
@@ -306,7 +295,7 @@ scrollToEnd([params])
 ```
 滚动到瀑布流列表的底部
 
-**参数：**
+##### 参数：
 |   Prop   |   Type   |  Required |
 | :------| :------ | :--------|
 |   params   |  `object`  |    false    |
@@ -331,7 +320,6 @@ this.listRef.scrollToEnd()
 ```
 
 
----
 ### **`scrollToIndex()`** 
 
 ```jsx
@@ -340,7 +328,7 @@ scrollToIndex([params])
 
 将位于指定位置的元素滚动到可视区的指定位置，当viewPosition 为 0 时将它滚动到屏幕顶部，为 1 时将它滚动到屏幕底部，为 0.5 时将它滚动到屏幕中央。
 
-**参数：**
+##### 参数：
 |   Prop   |   Type   |  Required |
 | :------| :------ | :--------|
 |   params   |  `object`  |    true    |
@@ -353,7 +341,6 @@ params的参数如下:
 - 'viewPosition' (number) - 为 0 时将它滚动到屏幕顶部，为 1 时将它滚动到屏幕底部，为 0.5 时将它滚动到屏幕中央
 
 
----
 ### **`scrollToOffset()`** 
 
 ```jsx
@@ -362,7 +349,7 @@ scrollToOffset([params])
 
 滚动列表到指定的偏移（以像素为单位），等同于ScrollView的scrollTo方法。
 
-**参数：**
+##### 参数：
 |   Prop   |   Type   |  Required |
 | :------| :------ | :--------|
 |   params   |  `object`  |    true    |
