@@ -1,12 +1,12 @@
-<h2 align="center">
+<h1 align="center">
   <a href="https://github.com/axerjs/react-native-waterfall-flow">
     react-native-waterfall-flow
   </a>
-</h2>
+</h1>
 
-<h5 align="center">
+<h4 align="center">
   React Native 高性能瀑布流组件
-</h5>
+</h4>
 
 <p align="center">
   <a href="https://www.npmjs.org/package/react-native-waterfall-flow">
