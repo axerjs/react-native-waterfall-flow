@@ -7,18 +7,19 @@ export default class WaterfallFlow extends React.PureComponent {
 
   constructor(props) {
     super(props)
-    this._checkProps(props)
+    // this._checkProps(props)
   }
 
   _listRef = null
   _width = 0
-  _height = 0
   _headerHeight = 0
   _innerHeight = 0
   _dataSource = []
+  _itemHeights = []
+  _allRendered = false
 
   componentDidUpdate() {
-    this._checkProps(this.props)
+    // this._checkProps(this.props)
   }
 
   _checkProps(props) {
@@ -39,7 +40,6 @@ export default class WaterfallFlow extends React.PureComponent {
           const { height } = nativeEvent.layout
           if (this._headerHeight != height) {
             this._headerHeight = height
-            this.forceUpdate()
           }
         }}
       >
@@ -48,11 +48,15 @@ export default class WaterfallFlow extends React.PureComponent {
     )
   }
 
-  _computePositions = () => {
+  _computePositions = (byRender) => {
+    if (this._isForce) {
+      this._isForce = false
+      return
+    }
     const {
       data = [],
       numColumns = 2,
-      itemHeight,
+      // itemHeight,
     } = this.props
 
     const columnHeights = []
@@ -66,8 +70,9 @@ export default class WaterfallFlow extends React.PureComponent {
         }
       }
       const offsetTop = columnHeights[columnIndex] || 0
-      const height = itemHeight({ item, index })
-      columnHeights[columnIndex] = offsetTop + height
+      // const height = itemHeight({ item, index })
+      const height = this._itemHeights[index]
+      columnHeights[columnIndex] = offsetTop + (height || 0)
       const obj = {
         height,
         columnIndex,
@@ -83,15 +88,19 @@ export default class WaterfallFlow extends React.PureComponent {
     let rowIndex = 0
     let rowData = []
     let rowOffsetTop = 0
+    let breakFlag = false
     originItems.forEach((data, dataIndex) => {
       if (rowData.length == numColumns) {
-        rowOffsetTop += dataSource[rowIndex].height
+        if (!breakFlag) {
+          breakFlag = rowData.some(item => item.height === undefined)
+        }
+        rowOffsetTop += dataSource[rowIndex].height || 0
         rowData = []
         rowIndex++
       }
       rowData.push(data)
-      const bottomItem = rowData.sort((a, b) => (b.height + b.offsetTop) - (a.height + a.offsetTop))[0]
-      const height = bottomItem.offsetTop - rowOffsetTop + bottomItem.height
+      const bottomItem = rowData.sort((a, b) => ((b.height || 0) + b.offsetTop) - ((a.height || 0) + a.offsetTop))[0]
+      const height = bottomItem.offsetTop - rowOffsetTop + (bottomItem.height || 0)
       dataSource[rowIndex] = {
         rowIndex,
         rowData,
@@ -103,6 +112,18 @@ export default class WaterfallFlow extends React.PureComponent {
       }
     })
     this._dataSource = dataSource
+    if (!breakFlag && !byRender) {
+      this._isForce = true
+      this.forceUpdate()
+
+      if (!this._allRendered) {
+        setTimeout(() => {
+          this._allRendered = true
+          this._isForce = true
+          this.forceUpdate()
+        }, Platform.OS === 'android' ? 1000 : 10)
+      }
+    }
   }
 
   scrollToEnd = ({ animated = true } = {}) => {
@@ -152,12 +173,16 @@ export default class WaterfallFlow extends React.PureComponent {
       renderItem,
       numColumns = 2,
       style,
-      onLayout,
       onContentSizeChange,
+      ListFooterComponent,
+      data,
+      contentContainerStyle,
+      onEndReachedThreshold = 0.2
     } = this.props
 
     const columnWidth = this._width / numColumns
-    this._computePositions()
+    
+    this._computePositions(true)
 
     return (
       <FlatList
@@ -165,25 +190,18 @@ export default class WaterfallFlow extends React.PureComponent {
         ref={ref => this._listRef = ref}
         style={[{ flex: 1 }, style]}
         removeClippedSubviews={Platform.OS === 'android'}
-        onEndReachedThreshold={0.2}
+        onEndReachedThreshold={onEndReachedThreshold}
         numColumns={1}
         data={this._dataSource}
         keyExtractor={(item, index) => `row_${index}`}
+        contentContainerStyle={{ minHeight: '100%', ...(contentContainerStyle || {}) }}
         ListHeaderComponent={this._renderHeader()}
+        ListFooterComponent={this._allRendered ? ListFooterComponent : null}
         getItemLayout={(data, index) => ({ 
-          length: this._dataSource[index].height, 
-          offset: this._dataSource[index].rowOffsetTop, 
+          length: this._dataSource[index].height || 0, 
+          offset: this._dataSource[index].rowOffsetTop || 0, 
           index 
         })}
-        onLayout={(e) => {
-          const { nativeEvent } = e
-          const { height } = nativeEvent.layout
-          if (this._height != height) {
-            this._height = height
-            this.forceUpdate()
-          }
-          onLayout && onLayout(e)
-        }}
         onContentSizeChange={(w, h) => {
           this._innerHeight = h
           if (this._width != w) {
@@ -198,6 +216,14 @@ export default class WaterfallFlow extends React.PureComponent {
               rowItem={item}
               renderItem={renderItem}
               columnWidth={columnWidth}
+              onItemHeightChange={(height, index) => {
+                if (this._itemHeights[index] !== height) {
+                  this._itemHeights[index] = height
+                  if (this._itemHeights.length === data.length && !this._itemHeights.some(o => typeof o === 'undefined')) {
+                    this._computePositions()
+                  }
+                }
+              }}
             />
           )
         }}

@@ -5,8 +5,8 @@
     "waterfall",
     "react"
   ],
-  "version": "1.0.0",
-  "description": "A high-performance waterfall flow component for React Native.",
+  "version": "1.1.0",
+  "description": "React Native 高性能瀑布流组件",
   "main": "index.js",
   "files": [
     "src",
