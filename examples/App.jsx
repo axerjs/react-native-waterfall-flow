@@ -87,9 +87,6 @@ export default class TestWaterfallFlowScreen extends Component {
         onEndReached={this.onEndReached}
         refreshing={refreshing}
         onRefresh={() => this.loadData(1, true)}
-        itemHeight={({ item, index }) => {
-          return item.height
-        }}
         renderItem={({ item, index, columnIndex }) => {
           return (
             <Card item={item} index={index} columnIndex={columnIndex}/>
@@ -107,7 +104,6 @@ class Card extends PureComponent {
       <View style={{ flex: 1, overflow: 'hidden' }}>
         <TouchableOpacity 
           style={{ backgroundColor: '#fff', flex: 1 }} 
-          onPress={() => Alert.alert(`${index}`)}
           activeOpacity={1}
         >
           <FadeImage 

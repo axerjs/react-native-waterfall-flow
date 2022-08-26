@@ -1,37 +1,42 @@
-<h1 align="center">
+<h2 align="center">
   <a href="https://github.com/axerjs/react-native-waterfall-flow">
     react-native-waterfall-flow
   </a>
-</h1>
+</h2>
+
+<h5 align="center">
+  React Native 高性能瀑布流组件
+</h5>
 
 <p align="center">
-  一个基于FlatList实现的高性能瀑布流组件
-</p>
-
-<p align="center">
-  <a href="https://github.com/axerjs/react-native-waterfall-flow/blob/HEAD/LICENSE">
-    <img src="https://img.shields.io/github/license/axerjs/react-native-waterfall-flow" alt="react-native-waterfall-flow is released under the MIT license." />
-  </a>
   <a href="https://www.npmjs.org/package/react-native-waterfall-flow">
-    <img src="https://img.shields.io/badge/npm%20package-v1.0.0-brightgreen" alt="Current npm package version." />
+    <img src="https://img.shields.io/badge/npm%20package-v1.1.0-brightgreen" alt="Current npm package version." />
+  </a>
+  <a href="https://github.com/axerjs/react-native-waterfall-flow/blob/HEAD/LICENSE">
+    <img src="https://img.shields.io/badge/LICENSE-MIT-blue" alt="react-native-waterfall-flow is released under the MIT license." />
   </a>
   <a target="_blank" href="https://standardjs.com/">
-    <img src="https://img.shields.io/badge/code%20style-standard-green" alt="code style" />
+    <img src="https://img.shields.io/badge/code%20style-standard-brightgreen" alt="code style" />
   </a>
-  <a target="_blank" href="#">
+  <!-- <a target="_blank" href="#">
     <img src="https://img.shields.io/badge/chat-email-blue" alt="chat by email" />
-  </a>
+  </a> -->
 </p>
 
-<p align="center">
-  查看
-  <a href="https://github.com/axerjs/react-native-waterfall-flow/blob/main/README-en.md">
-    English readme
-  </a>
-  英文文档
-</p>
+## 特性
 
-## 目录
+- 性能方面表现突出，渲染速度快，滚动体验良好
+- 无需手动设置item高度，一切计算工作由组件内部完成
+- 属性和方法与[FlatList](https://reactnative.cn/docs/flatlist)完全一致，易于上手
+
+## Changelogs
+
+* [1.1.0]
+
+  - 移除手动设置item高度，一切计算工作由组件内部完成
+  - 进一步提升体验，性能表现极佳
+
+<!-- ## 目录
 
 - [展示案例](#展示案例)
 - [安装](#安装)
@@ -39,7 +44,7 @@
 - [属性](#属性)
 - [方法](#方法)
 - [示例](#示例)
-- [License](#license)
+- [License](#license) -->
 
 
 ## 展示案例
@@ -56,14 +61,13 @@
 
 ## 安装
 
-> v1.0.0
+> v1.1.0
 
 ```bash
 npm install react-native-waterfall-flow --save
 ```
 
 ## 基本使用
-> `react-native-waterfall-flow`是基于`FlatList`实现的, 支持`FlatList`的所有属性和方法。请确保您已熟悉如何使用 [FlatList](https://reactnative.cn/docs/flatlist)
 
 ```jsx
 import WaterfallFlow from 'react-native-waterfall-flow'
@@ -73,9 +77,6 @@ import WaterfallFlow from 'react-native-waterfall-flow'
 <WaterfallFlow
   data={data}
   numColumns={2}
-  itemHeight={({ item, index }) => {
-    return ITEM_HEIGHT
-  }}
   renderItem={({ item, index, columnIndex }) => {
     return (
       <View>
@@ -92,27 +93,6 @@ import WaterfallFlow from 'react-native-waterfall-flow'
 
 > 几乎所有FlatList的属性都是支持的，这里只列出一些常用的属性，其余属性可查看[FlatList文档](https://reactnative.cn/docs/flatlist)
 
-### **`itemHeight`** 
-
-|   Type   |  Required |                Description                |
-| :------ | :--------| :--------------------------------------  |
-|  `function`  |    true    |  用于获取每个item的真实高度 |
-
-- `item` (Object): 当前项的数据
-- `index` (number): 当前项的索引
-
-相信你能够准确的计算出每个`item`的高度并将其设置到`itemHeight`中，以便于我们将其布局到正确的位置。如果`item`的高度交给瀑布流组件内部去实现获取，会非常影响性能和体验，这不是一个好的选择
-
-示例用法：
-
-```jsx
-<WaterfallFlow
-  itemHeight={({ item, index }) => {
-    return ITEM_HEIGHT  // 用你聪明的小脑瓜计算出当前项的高度
-  }}
-  ...
-/>
-```
 
 ### **`renderItem`** 
 
@@ -142,7 +122,7 @@ import WaterfallFlow from 'react-native-waterfall-flow'
 
 **如何设置间距** 
 
-`renderItem`方法暴露出了`columnIndex`，该属性表示当前`item`在列表中第几列，这样你就能够自由的控制item的上下左右间距了。上下部分的padding也要计算在item的高度中；每个item的宽度等于 `瀑布流的宽度` / `numColumns`
+`renderItem`方法暴露出了`columnIndex`，该属性表示当前`item`在列表中第几列，这样你就能够自由的控制每个item的上下左右间距了。item的宽度等于 `瀑布流容器的宽度` / `numColumns`
 
 示例用法：
 ```jsx

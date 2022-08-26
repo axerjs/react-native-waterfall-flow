@@ -19,15 +19,22 @@ export default class WaterfallItem extends React.Component {
       rowItem,
       renderItem,
       columnWidth,
+      onItemHeightChange
     } = this.props
 
-    const { rowData, height, rowOffsetTop } = rowItem
+    const { rowData, rowOffsetTop, height } = rowItem
+
+    const extraStyle = {}
+    if (height > 0) {
+      extraStyle.height = height
+      extraStyle.opacity = 1
+    }
 
     return (
-      <View style={{ flexDirection: 'row', height }}>
+      <View style={{ flexDirection: 'row', opacity: 0,  ...extraStyle }}>
         {
           rowData.map((data, dataIndex) => {
-            const { item, index, columnIndex, height, offsetTop } = data
+            const { item, index, columnIndex, offsetTop } = data
             return (
               <View
                 key={`item_${dataIndex}`}
@@ -35,8 +42,10 @@ export default class WaterfallItem extends React.Component {
                   position: 'absolute',
                   top: offsetTop - rowOffsetTop,
                   left: columnIndex * columnWidth,
-                  height: height,
                   width: columnWidth,
+                }}
+                onLayout={e => {
+                  onItemHeightChange(e.nativeEvent.layout.height, index)
                 }}
               >
                 {renderItem && renderItem({ item, index, columnIndex })}
