@@ -88,12 +88,8 @@ export default class WaterfallFlow extends React.PureComponent {
     let rowIndex = 0
     let rowData = []
     let rowOffsetTop = 0
-    let breakFlag = false
     originItems.forEach((data, dataIndex) => {
       if (rowData.length == numColumns) {
-        if (!breakFlag) {
-          breakFlag = rowData.some(item => item.height === undefined)
-        }
         rowOffsetTop += dataSource[rowIndex].height || 0
         rowData = []
         rowIndex++
@@ -112,17 +108,12 @@ export default class WaterfallFlow extends React.PureComponent {
       }
     })
     this._dataSource = dataSource
-    if (!breakFlag && !byRender) {
+    if (!byRender) {
+      if (!this._allRendered) {
+        this._allRendered = true
+      }
       this._isForce = true
       this.forceUpdate()
-
-      if (!this._allRendered) {
-        setTimeout(() => {
-          this._allRendered = true
-          this._isForce = true
-          this.forceUpdate()
-        }, Platform.OS === 'android' ? 1000 : 10)
-      }
     }
   }
 
@@ -177,11 +168,14 @@ export default class WaterfallFlow extends React.PureComponent {
       ListFooterComponent,
       data,
       contentContainerStyle,
-      onEndReachedThreshold = 0.2
+      onEndReachedThreshold = 0.2,
+      onEndReached
     } = this.props
 
     const columnWidth = this._width / numColumns
     
+    this._itemHeights.length = data.length
+
     this._computePositions(true)
 
     return (
@@ -191,6 +185,11 @@ export default class WaterfallFlow extends React.PureComponent {
         style={[{ flex: 1 }, style]}
         removeClippedSubviews={Platform.OS === 'android'}
         onEndReachedThreshold={onEndReachedThreshold}
+        onEndReached={info => {
+          if (!JSON.parse(JSON.stringify(this._itemHeights)).some(o => o === null)) {
+            onEndReached && onEndReached(info)
+          }
+        }}
         numColumns={1}
         data={this._dataSource}
         keyExtractor={(item, index) => `row_${index}`}
@@ -213,13 +212,16 @@ export default class WaterfallFlow extends React.PureComponent {
         renderItem={({ item, index }) => {
           return (
             <WaterfallItem
+              rowIndex={index}
               rowItem={item}
               renderItem={renderItem}
               columnWidth={columnWidth}
               onItemHeightChange={(height, index) => {
                 if (this._itemHeights[index] !== height) {
+                  const preAllLoaded = !JSON.parse(JSON.stringify(this._itemHeights)).some(o => o === null)
                   this._itemHeights[index] = height
-                  if (this._itemHeights.length === data.length && !this._itemHeights.some(o => typeof o === 'undefined')) {
+                  const allLoaded = !JSON.parse(JSON.stringify(this._itemHeights)).some(o => o === null)
+                  if (allLoaded && !preAllLoaded) {
                     this._computePositions()
                   }
                 }

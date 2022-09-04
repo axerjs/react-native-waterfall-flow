@@ -13,7 +13,7 @@ interface WaterfallFlowProps<ItemT> extends Omit<FlatListProps<ItemT>, 'renderIt
    * }}
    * ```
    */
-  itemHeight: (info: { item: any; index: number }) => number;
+  // itemHeight: (info: { item: any; index: number }) => number;
 
   /**
    * Takes an item from data and renders it into the list. Typical usage:
