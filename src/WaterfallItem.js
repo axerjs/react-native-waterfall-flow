@@ -5,6 +5,10 @@ export default class WaterfallItem extends React.Component {
 
   constructor(props) {
     super(props)
+
+    this.state = {
+      opacity: 0
+    }
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -16,6 +20,7 @@ export default class WaterfallItem extends React.Component {
 
   render() {
     const {
+      rowIndex,
       rowItem,
       renderItem,
       columnWidth,
@@ -27,17 +32,20 @@ export default class WaterfallItem extends React.Component {
     const extraStyle = {}
     if (height > 0) {
       extraStyle.height = height
+    }
+    if (!rowData.some(item => item.height === undefined)) {
       extraStyle.opacity = 1
+      this.state.opacity = 1
     }
 
     return (
-      <View style={{ flexDirection: 'row', opacity: 0,  ...extraStyle }}>
+      <View style={{ flexDirection: 'row', opacity: this.state.opacity,  ...extraStyle }} key={`row_${rowIndex}`}>
         {
           rowData.map((data, dataIndex) => {
             const { item, index, columnIndex, offsetTop } = data
             return (
               <View
-                key={`item_${dataIndex}`}
+                key={`row_${rowIndex}_item_${dataIndex}`}
                 style={{
                   position: 'absolute',
                   top: offsetTop - rowOffsetTop,
