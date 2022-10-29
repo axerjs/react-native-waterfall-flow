@@ -218,10 +218,13 @@ export default class WaterfallFlow extends React.PureComponent {
               columnWidth={columnWidth}
               onItemHeightChange={(height, index) => {
                 if (this._itemHeights[index] !== height) {
-                  const preAllLoaded = !JSON.parse(JSON.stringify(this._itemHeights)).some(o => o === null)
+                  // const preAllLoaded = !JSON.parse(JSON.stringify(this._itemHeights)).some(o => o === null)
                   this._itemHeights[index] = height
                   const allLoaded = !JSON.parse(JSON.stringify(this._itemHeights)).some(o => o === null)
-                  if (allLoaded && !preAllLoaded) {
+                  // if (allLoaded && !preAllLoaded) {
+                  //   this._computePositions()
+                  // }
+                  if (allLoaded) {
                     this._computePositions()
                   }
                 }
