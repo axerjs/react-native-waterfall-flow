@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://www.npmjs.org/package/react-native-waterfall-flow">
-    <img src="https://img.shields.io/badge/npm%20package-v1.1.1-brightgreen" alt="Current npm package version." />
+    <img src="https://img.shields.io/badge/npm%20package-v1.1.2-brightgreen" alt="Current npm package version." />
   </a>
   <a href="https://github.com/axerjs/react-native-waterfall-flow/blob/HEAD/LICENSE">
     <img src="https://img.shields.io/badge/LICENSE-MIT-blue" alt="react-native-waterfall-flow is released under the MIT license." />
@@ -30,6 +30,10 @@
 - 属性和方法与[FlatList](https://reactnative.cn/docs/flatlist)完全一致，易于上手
 
 ## Changelogs
+
+* [1.1.2]
+
+  - 支持随时变化高度的item，无副作用
 
 * [1.1.1]
 
@@ -61,7 +65,7 @@
 
 ## 安装
 
-> v1.1.1
+> v1.1.2
 
 ```bash
 npm install react-native-waterfall-flow --save
