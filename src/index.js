@@ -17,6 +17,8 @@ export default class WaterfallFlow extends React.PureComponent {
   _dataSource = []
   _itemHeights = []
   _allRendered = false
+  _itemDidUpdates = []
+  _itemRefs = []
 
   componentDidUpdate() {
     // this._checkProps(this.props)
@@ -117,6 +119,15 @@ export default class WaterfallFlow extends React.PureComponent {
     }
   }
 
+  _updateIfNeeded = () => {
+    const { numColumns = 2 } = this.props
+    const itemDidUpdates = JSON.parse(JSON.stringify(this._itemDidUpdates))
+    const itemHeights = JSON.parse(JSON.stringify(this._itemHeights))
+    if (!itemHeights.some(o => o === null) && !itemDidUpdates.some((o, index) => (o === null && this._itemRefs[Math.floor(index / numColumns)])) && itemDidUpdates.some(o => o === 2)) {
+      this.forceUpdate()
+    }
+  }
+
   scrollToEnd = ({ animated = true } = {}) => {
     this.scrollToOffset({
       animated,
@@ -176,6 +187,9 @@ export default class WaterfallFlow extends React.PureComponent {
     
     this._itemHeights.length = data.length
 
+    this._itemDidUpdates = []
+    this._itemDidUpdates.length = data.length
+
     this._computePositions(true)
 
     return (
@@ -212,20 +226,39 @@ export default class WaterfallFlow extends React.PureComponent {
         renderItem={({ item, index }) => {
           return (
             <WaterfallItem
+              ref={ref => {
+                this._itemRefs[index] = ref
+              }}
               rowIndex={index}
               rowItem={item}
               renderItem={renderItem}
               columnWidth={columnWidth}
+              onItemDidUpdate={(flag) => {
+                const { rowData } = item
+                const itemDidUpdates = JSON.parse(JSON.stringify(this._itemDidUpdates))
+                rowData.forEach((data) => {
+                  const { index } = data
+                  if (itemDidUpdates[index] === null) {
+                    this._itemDidUpdates[index] = flag
+                  }
+                })
+                this._updateIfNeeded()
+              }}
               onItemHeightChange={(height, index) => {
+                const preHeight = this._itemHeights[index]
                 if (this._itemHeights[index] !== height) {
-                  // const preAllLoaded = !JSON.parse(JSON.stringify(this._itemHeights)).some(o => o === null)
+                  const preAllLoaded = !JSON.parse(JSON.stringify(this._itemHeights)).some(o => o === null)
                   this._itemHeights[index] = height
                   const allLoaded = !JSON.parse(JSON.stringify(this._itemHeights)).some(o => o === null)
-                  // if (allLoaded && !preAllLoaded) {
-                  //   this._computePositions()
-                  // }
                   if (allLoaded) {
-                    this._computePositions()
+                    if (preAllLoaded) {
+                      this._itemDidUpdates[index] = 2
+                      if (preHeight && height && Math.abs(preHeight - height) >= 0.01) {
+                        this._updateIfNeeded()
+                      }
+                    } else {
+                      this._computePositions()
+                    }
                   }
                 }
               }}

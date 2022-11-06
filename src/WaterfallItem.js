@@ -15,7 +15,15 @@ export default class WaterfallItem extends React.Component {
     if (JSON.stringify(this.props) != JSON.stringify(nextProps)) {
       return true
     }
+    const { onItemDidUpdate } = this.props
+    onItemDidUpdate(0)
     return false
+  }
+
+
+  componentDidUpdate() {
+    const { onItemDidUpdate } = this.props
+    onItemDidUpdate(1)
   }
 
   render() {
