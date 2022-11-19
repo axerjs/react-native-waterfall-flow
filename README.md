@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://www.npmjs.org/package/react-native-waterfall-flow">
-    <img src="https://img.shields.io/badge/npm%20package-v1.1.3-brightgreen" alt="Current npm package version." />
+    <img src="https://img.shields.io/badge/npm%20package-v1.1.4-brightgreen" alt="Current npm package version." />
   </a>
   <a href="https://github.com/axerjs/react-native-waterfall-flow/blob/HEAD/LICENSE">
     <img src="https://img.shields.io/badge/LICENSE-MIT-blue" alt="react-native-waterfall-flow is released under the MIT license." />
@@ -31,13 +31,10 @@
 
 ## Changelogs
 
-* [1.1.3]
+* [1.1.4]
 
-  - 支持随时变化高度的item，能够及时更新item高度和位置，体验良好
-
-* [1.1.1]
-
-  - 移除手动设置item高度，一切计算工作由组件内部完成
+  - 无需手动设置item高度，一切计算工作由瀑布流组件内部完成
+  - 支持随时变化高度的item，体验良好
   - 进一步提升体验，性能表现极佳
 
 <!-- ## 目录
@@ -65,7 +62,7 @@
 
 ## 安装
 
-> v1.1.3
+> v1.1.4
 
 ```bash
 npm install react-native-waterfall-flow --save
