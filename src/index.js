@@ -19,6 +19,7 @@ export default class WaterfallFlow extends React.PureComponent {
   _allRendered = false
   _itemDidUpdates = []
   _itemRefs = []
+  _updateTimeout = null
 
   componentDidUpdate() {
     // this._checkProps(this.props)
@@ -124,7 +125,10 @@ export default class WaterfallFlow extends React.PureComponent {
     const itemDidUpdates = JSON.parse(JSON.stringify(this._itemDidUpdates))
     const itemHeights = JSON.parse(JSON.stringify(this._itemHeights))
     if (!itemHeights.some(o => o === null) && !itemDidUpdates.some((o, index) => (o === null && this._itemRefs[Math.floor(index / numColumns)])) && itemDidUpdates.some(o => o === 2)) {
-      this.forceUpdate()
+      clearTimeout(this._updateTimeout)
+      this._updateTimeout = setTimeout(() => {
+        this.forceUpdate()
+      }, 10)
     }
   }
 
