@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://www.npmjs.org/package/react-native-waterfall-flow">
-    <img src="https://img.shields.io/badge/npm%20package-v1.1.4-brightgreen" alt="Current npm package version." />
+    <img src="https://img.shields.io/badge/npm%20package-v1.1.5-brightgreen" alt="Current npm package version." />
   </a>
   <a href="https://github.com/axerjs/react-native-waterfall-flow/blob/HEAD/LICENSE">
     <img src="https://img.shields.io/badge/LICENSE-MIT-blue" alt="react-native-waterfall-flow is released under the MIT license." />
@@ -30,6 +30,10 @@
 - 属性和方法与[FlatList](https://reactnative.cn/docs/flatlist)完全一致，易于上手
 
 ## Changelogs
+
+* [1.1.5]
+
+  - 解决[安卓端瀑布流相邻高度差距过大会有空白的问题](https://github.com/axerjs/react-native-waterfall-flow/issues/32)
 
 * [1.1.4]
 
@@ -62,7 +66,7 @@
 
 ## 安装
 
-> v1.1.4
+> v1.1.5
 
 ```bash
 npm install react-native-waterfall-flow --save

@@ -198,10 +198,10 @@ export default class WaterfallFlow extends React.PureComponent {
 
     return (
       <FlatList
+        removeClippedSubviews={false}
         {...this.props}
         ref={ref => this._listRef = ref}
         style={[{ flex: 1 }, style]}
-        removeClippedSubviews={Platform.OS === 'android'}
         onEndReachedThreshold={onEndReachedThreshold}
         onEndReached={info => {
           if (!JSON.parse(JSON.stringify(this._itemHeights)).some(o => o === null)) {
